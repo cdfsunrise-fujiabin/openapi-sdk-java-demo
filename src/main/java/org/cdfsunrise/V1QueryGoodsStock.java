@@ -8,22 +8,20 @@ import java.util.TreeMap;
 
 public class V1QueryGoodsStock {
     public static String DoQuery() {
-        var service = new org.cdfsunrise.open.V1QueryGoodsStock();
+        org.cdfsunrise.open.V1QueryGoodsStock service = new org.cdfsunrise.open.V1QueryGoodsStock();
         try {
-            var req = new org.cdfsunrise.open.V1QueryGoodsStock.OpenDataReq();
+            org.cdfsunrise.open.V1QueryGoodsStock.OpenDataReq req = new org.cdfsunrise.open.V1QueryGoodsStock.OpenDataReq();
             // TODO：查询结构体为：{"extGoodsId":"","warehouse":"","merchantId":"","lefoxId":""}， 属性参数按需填充即可
             // TODO: rsa public key也应填充为自己账号中的rsa public key
-            req.setData(RsaService.encrypt("", """
------BEGIN RSA PUBLIC KEY-----
-MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0XAbluGzEsRhZ82X20bI
-vUPxtTLiBJQiDfJtpLF4YjmxB04cU9LHAIGsxnK/VDcnlIlOutneJarxWwVq5sEe
-Vp9bMG+KtNPPdXFj+tMb4hloKwFAVXiyxLoDrgRW5DDes8MUI+6kiIGX4hi5KSRP
-mKFVtMOLD142+kuRaCEYvz4gz85cRiOa09jJ8JEvU+8DieysJJrEvVVaexGjJD3o
-hFslRLfoG06NbvaSwdqL1+z98pdp4JMjx47BccUTEXB1jVVOmU3zyNVP33v4iVyW
-q5O47ccKVMuvxN5dlGsXEOoSuesWxQblF2TjNt1Vd8D73l7por4Gm7Gf4Mw05Tyl
-JwIDAQAB
------END RSA PUBLIC KEY-----
-"""));
+            req.setData(RsaService.encrypt("", "-----BEGIN RSA PUBLIC KEY-----\n" +
+                    "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0XAbluGzEsRhZ82X20bI\n" +
+                    "vUPxtTLiBJQiDfJtpLF4YjmxB04cU9LHAIGsxnK/VDcnlIlOutneJarxWwVq5sEe\n" +
+                    "Vp9bMG+KtNPPdXFj+tMb4hloKwFAVXiyxLoDrgRW5DDes8MUI+6kiIGX4hi5KSRP\n" +
+                    "mKFVtMOLD142+kuRaCEYvz4gz85cRiOa09jJ8JEvU+8DieysJJrEvVVaexGjJD3o\n" +
+                    "hFslRLfoG06NbvaSwdqL1+z98pdp4JMjx47BccUTEXB1jVVOmU3zyNVP33v4iVyW\n" +
+                    "q5O47ccKVMuvxN5dlGsXEOoSuesWxQblF2TjNt1Vd8D73l7por4Gm7Gf4Mw05Tyl\n" +
+                    "JwIDAQAB\n" +
+                    "-----END RSA PUBLIC KEY-----"));
             req.setAppid("");
             req.setDataEncryptMethod("rsa"); // 这个目前固定，不用改
             req.setSignEncryptMethod("md5"); // 这个目前固定，不用改
